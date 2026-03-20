@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sueño de Azúcar</title>
+
+<link rel="icon" href="img/logo.jpg.jpeg">
+
+<style>
+html{scroll-behavior:smooth;}
+
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:#0e3b3b;
+    color:#f5f1e6;
+}
+
+/* PORTADA */
+.container{
+    text-align:center;
+    padding:80px 20px;
+    background:linear-gradient(135deg,#0e3b3b,#145454);
+}
+
+.container img{
+    width:100%;
+    max-width:600px;
+    border-radius:25px;
+}
+
+h1{
+    color:#d4af37;
+    font-size:60px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:18px 35px;
+    background:#d4af37;
+    color:#0e3b3b;
+    border-radius:12px;
+    text-decoration:none;
+}
+
+/* VIDEO */
+.video{text-align:center;padding:60px;}
+video{width:90%;max-width:900px;border-radius:20px;}
+
+/* GALERIA */
+.imagenes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.imagenes img{
+    width:100%;
+    height:420px;
+    object-fit:contain;
+    background:#0b2f2f;
+    border-radius:20px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.imagenes img:hover{
+    transform:scale(1.05);
+}
+
+/* VISOR */
+#visor{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+#visor img{
+    max-width:90%;
+    max-height:90%;
+}
+
+/* UBICACION */
+.ubicacion{text-align:center;padding:60px;}
+
+/* FORMULARIO MEJORADO */
+.formulario{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:80px 20px;
+}
+
+.form-box{
+    background:white;
+    color:#0e3b3b;
+    padding:40px;
+    border-radius:20px;
+    max-width:420px;
+    width:100%;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.form-box h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#0e3b3b;
+}
+
+input,textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+textarea{
+    height:100px;
+    resize:none;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#d4af37;
+    color:#0e3b3b;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#b8962e;
+}
+
+/* WHATSAPP */
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:15px;
+    border-radius:50%;
+    font-size:20px;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <img src="img/logo.jpg.jpeg">
+    <h1>Sueño de Azúcar</h1>
+    <a href="#formulario" class="btn">Inscribirme</a>
+</div>
+
+<div class="video">
+    <video controls>
+        <source src="video.mp4">
+    </video>
+</div>
+
+<div class="imagenes">
+    <img src="img/imagen.jpg.jpeg" onclick="abrir(this.src)">
+    <img src="img/imagen2.jpg.jpeg" onclick="abrir(this.src)">
+    <img src="img/imagen3.jpg.jpeg" onclick="abrir(this.src)">
+    <img src="img/imagen4.jpg.jpeg" onclick="abrir(this.src)">
+    <img src="img/imagen5.jpg.jpeg" onclick="abrir(this.src)">
+    <img src="img/imagen6.jpg.jpeg" onclick="abrir(this.src)">
+    <img src="img/imagen7.jpg.jpeg" onclick="abrir(this.src)">
+    <img src="img/imagen8.jpg.jpeg" onclick="abrir(this.src)">
+</div>
+
+<div id="visor" onclick="cerrar()">
+    <img id="imgGrande">
+</div>
+
+<div class="ubicacion">
+    <a href="https://www.google.com/maps?q=Santo+Domingo+de+los+Colorados" target="_blank" class="btn">
+        📍 Cómo llegar
+    </a>
+
+    <iframe 
+    src="https://www.google.com/maps?q=Santo+Domingo+de+los+Colorados&output=embed"
+    width="90%" height="300">
+    </iframe>
+</div>
+
+<div class="formulario" id="formulario">
+    <div class="form-box">
+        <form action="https://formspree.io/f/xxxxabcd" method="POST">
+            <h2>Formulario</h2>
+
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Correo" required>
+            <input type="tel" name="telefono" placeholder="Teléfono" required>
+            <textarea name="mensaje" placeholder="Mensaje"></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</div>
+
+<!-- BOTON WHATSAPP -->
+<a href="https://wa.me/593XXXXXXXXX" class="whatsapp" target="_blank">💬</a>
+
+<script>
+function abrir(src){
+document.getElementById("visor").style.display="flex";
+document.getElementById("imgGrande").src=src;
+}
+function cerrar(){
+document.getElementById("visor").style.display="none";
+}
+</script>
+
+</body>
+</html>
